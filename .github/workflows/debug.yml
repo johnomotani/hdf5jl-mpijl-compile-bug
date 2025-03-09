@@ -17,6 +17,6 @@ jobs:
       - name: Debug test
         run: |
           touch Project.toml
-          julia --project -O3 --check-bounds=yes -e 'using Pkg; Pkg.add(["MPI", "MPIPreferences"]); using MPIPreferences; MPIPreferences.use_jll_binary("OpenMPI_jll")'
-          #julia --project -O3 --check-bounds=yes -e 'using Pkg; Pkg.add(name="HDF5_jll", version="v1.14.3")'
-          julia --project -O3 --check-bounds=yes -e 'using Pkg; Pkg.add("HDF5"); Pkg.precompile()'
+          julia --project -O3 --check-bounds=yes -e 'import Pkg; Pkg.add(["MPI", "MPIPreferences"]); using MPIPreferences; MPIPreferences.use_jll_binary("OpenMPI_jll")'
+          #julia --project -O3 --check-bounds=yes -e 'import Pkg; Pkg.add(name="HDF5_jll", version="v1.14.3")'
+          julia --project -O3 --check-bounds=yes -e 'import Pkg; Pkg.add("HDF5"); Pkg.precompile()'
