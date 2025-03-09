@@ -1,5 +1,5 @@
 # Based on example from https://github.com/julia-actions/julia-runtest
-name: Debug checks for correctness
+name: Debug
 
 on: [push, pull_request, workflow_dispatch]
 
@@ -17,7 +17,6 @@ jobs:
       - name: Debug test
         run: |
           touch Project.toml
-          julia --project -O3 --check-bounds=yes -e 'using Pkg; Pkg.add(["MPI", "MPIPreferences", "PackageCompiler"]); using MPIPreferences; MPIPreferences.use_jll_binary("OpenMPI_jll")'
+          julia --project -O3 --check-bounds=yes -e 'using Pkg; Pkg.add(["MPI", "MPIPreferences"]); using MPIPreferences; MPIPreferences.use_jll_binary("OpenMPI_jll")'
           #julia --project -O3 --check-bounds=yes -e 'using Pkg; Pkg.add(name="HDF5_jll", version="v1.14.3")'
-          julia --project -O3 --check-bounds=yes -e 'using MPI; MPI.install_mpiexecjl(; destdir=".")'
           julia --project -O3 --check-bounds=yes -e 'using Pkg; Pkg.add("HDF5"); Pkg.precompile()'
