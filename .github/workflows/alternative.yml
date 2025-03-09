@@ -2,10 +2,6 @@ name: Alternative test
 
 on: [push, pull_request, workflow_dispatch]
 
-permissions:
-  actions: write
-  contents: read
-
 jobs:
   debug-checks:
     runs-on: ubuntu-latest
