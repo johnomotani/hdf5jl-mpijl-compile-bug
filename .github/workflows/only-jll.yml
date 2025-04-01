@@ -19,4 +19,4 @@ jobs:
           touch Project.toml
           julia -e 'import Pkg; Pkg.add(["MPI", "MPIPreferences"]); using MPIPreferences; MPIPreferences.use_jll_binary("OpenMPI_jll")'
           julia -e 'import Pkg; Pkg.add("HDF5_jll")'
-          julia -e 'using MPI, HDF5_jll'
+          julia -e 'using HDF5_jll'
