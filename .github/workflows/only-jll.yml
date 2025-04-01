@@ -17,5 +17,5 @@ jobs:
       - name: jll only
         run: |
           touch Project.toml
-          julia -e 'import Pkg; Pkg.add(["MPI", "MPIPreferences"]); using MPIPreferences; MPIPreferences.use_jll_binary("OpenMPI_jll")'
+          julia -e 'import Pkg; Pkg.add("MPIPreferences"); using MPIPreferences; MPIPreferences.use_jll_binary("OpenMPI_jll")'
           julia -e 'import Pkg; Pkg.add("HDF5_jll"); using HDF5_jll'
