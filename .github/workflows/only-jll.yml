@@ -1,0 +1,21 @@
+# Based on example from https://github.com/julia-actions/julia-runtest
+name: jll only
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  jll-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@latest
+        with:
+          version: '1.11'
+          arch: x64
+      - name: jll only
+        run: |
+          touch Project.toml
+          julia -e 'import Pkg; Pkg.add(["MPI", "MPIPreferences"]); using MPIPreferences; MPIPreferences.use_jll_binary("OpenMPI_jll")'
+          julia -e 'import Pkg; Pkg.add("HDF5_jll"); using HDF5_jll'
